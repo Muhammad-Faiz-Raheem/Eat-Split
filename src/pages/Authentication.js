@@ -2,6 +2,7 @@ import { useState } from "react";
 import LoginForm from "../components/authentication/LoginForm";
 import SignupForm from "../components/authentication/SignupForm";
 import Header from "../ui/Header";
+import Footer from "../ui/Footer";
 
 function Authentication() {
   const [isLogin, setIsLogin] = useState(true);
@@ -22,6 +23,10 @@ function Authentication() {
         ) : (
           <SignupForm onSwitch={handleSwitch} />
         )}
+      </div>
+
+      <div>
+        <Footer />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import ResetPasswordForm from "../components/authentication/ResetPasswordForm";
+import Footer from "../ui/Footer";
 import Header from "../ui/Header";
 
 function ResetPassword() {
@@ -10,6 +11,10 @@ function ResetPassword() {
 
       <div>
         <ResetPasswordForm />
+      </div>
+
+      <div>
+        <Footer />
       </div>
     </div>
   );

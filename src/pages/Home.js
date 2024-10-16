@@ -1,5 +1,6 @@
 import Header from "../ui/Header";
 import Main from "../components/home/Main";
+import Footer from "../ui/Footer";
 
 function Home() {
   return (
@@ -10,6 +11,10 @@ function Home() {
 
       <div>
         <Main />
+      </div>
+
+      <div>
+        <Footer />
       </div>
     </div>
   );

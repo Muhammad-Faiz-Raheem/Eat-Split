@@ -1,3 +1,4 @@
+import Footer from "../ui/Footer";
 import Header from "../ui/Header";
 import WelcomeContent from "../ui/WelcomeContent";
 
@@ -10,6 +11,10 @@ function Welcome() {
 
       <div>
         <WelcomeContent />
+      </div>
+
+      <div>
+        <Footer />
       </div>
     </div>
   );
