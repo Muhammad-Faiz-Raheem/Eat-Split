@@ -82,6 +82,13 @@ function MainProvider({ children }) {
   }
 
   function handleSelection(friend) {
+    // if (isTablet && selectedFriend) {
+    //   setSelectedFriend(null);
+    //   setSelectTop(0);
+    //   setSelectBottom(0);
+    //   return;
+    // }
+
     setSelectedFriend((curSelected) =>
       curSelected?.id === friend.id ? null : friend
     );

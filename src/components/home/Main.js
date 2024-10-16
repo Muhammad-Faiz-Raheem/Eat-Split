@@ -5,11 +5,13 @@ import ConfirmDelete from "./ConfirmDelete";
 import { FormAddFriend } from "./FormAddFriend";
 import { FormSpitBill } from "./FormSpitBill";
 import { FriendsList } from "./FriendsList";
+import { useEffect, useRef, useState } from "react";
 
 function Main() {
   const {
     isTablet,
     isSmall,
+    friends,
     selectBottom,
     handleShowAddFriend,
     selectedFriend,
@@ -20,6 +22,22 @@ function Main() {
     isDeleting,
     isUpdating,
   } = useMain();
+
+  const appBottomRef = useRef();
+  const [appBottom, setAppBottom] = useState(0);
+
+  useEffect(
+    function () {
+      const rect = appBottomRef.current.getBoundingClientRect();
+      const appHeightFromBottom =
+        document.body.scrollHeight - (rect.top + window.scrollY);
+      setAppBottom(appHeightFromBottom);
+    },
+    [friends]
+  );
+
+  console.log(selectBottom);
+  console.log(appBottom);
 
   return (
     <div>
@@ -38,7 +56,7 @@ function Main() {
             marginBottom:
               isTablet && selectedFriend
                 ? selectBottom < 511
-                  ? 100 + (409 - selectBottom)
+                  ? 511 - (selectBottom - appBottom) - 90
                   : ""
                 : "",
           }}
@@ -48,7 +66,7 @@ function Main() {
 
             {showAddFriend && <FormAddFriend />}
 
-            <Button onClick={handleShowAddFriend}>
+            <Button onClick={handleShowAddFriend} reff={appBottomRef}>
               {showAddFriend ? "Close" : "Add Friend"}
             </Button>
           </div>
