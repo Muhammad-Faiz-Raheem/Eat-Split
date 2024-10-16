@@ -1,13 +1,617 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --color-lightest: #fff4e6;
+  --color-light: #ffe8cc;
+  --color-medium: #ffa94d;
+  --color-dark: #ff922b;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  color: #495057;
+  background-color: rgb(248, 226, 186);
+  overflow-x: hidden;
+  /* margin-bottom: 200px; */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  flex-wrap: wrap;
+  background-color: #583005;
+
+  position: absolute;
+  z-index: 100;
+}
+
+.logo {
+  flex-shrink: 0;
+  display: "flex";
+  justify-content: "center";
+}
+
+.name {
+  flex-shrink: 0;
+  margin: 10px 50px 10px 50px;
+  text-align: center;
+}
+
+.text {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.text-p {
+  color: white;
+  font-family: monospace;
+  text-transform: uppercase;
+}
+
+.welcome {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0 20px;
+}
+
+.back-img {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-image: url("/public/background.jpg");
+  background-size: cover;
+  opacity: 0.3;
+  z-index: 50;
+}
+
+.content {
+  display: flex;
+  margin-top: 120px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+  z-index: 100;
+}
+
+.welcome h3 {
+  text-transform: uppercase;
+  font-size: 30px;
+}
+
+.welcome h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Londrina Sketch", sans-serif;
+  /* font-family: Georgia, "Times New Roman", Times, serif; */
+}
+
+.welcome button {
+  font-size: 20px;
+  padding: 20px 0px;
+  text-transform: uppercase;
+}
+
+.container {
+  min-height: 100vh;
+  /* margin-top: 40px; */
+  /* align-items: center; */
+  position: relative;
+  display: flex;
+}
+
+.app {
+  /* min-height: 66vh; */
+  /* margin-top: 200px; */
+  display: grid;
+  grid-template-columns: 32rem;
+  /* column-gap: 4rem; */
+  align-items: start;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.button {
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn {
+  background-color: var(--color-medium);
+  color: #343a40;
+  padding: 0.7rem 1rem;
+}
+
+.del-btn {
+  background-color: red;
+  color: white;
+  padding: 0.4rem 0.6rem;
+}
+
+.button:hover {
+  color: #fff4e6;
+}
+
+.sidebar-border {
+  padding: 20px 15px;
+  border: 1px solid #ffa94d;
+  border-radius: 7px;
+}
+
+.sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar li {
+  display: grid;
+  grid-template-columns: 4.8rem 1fr auto;
+  align-items: center;
+  column-gap: 1.6rem;
+
+  padding: 1.2rem;
+  border-radius: 7px;
+  transition: 0.5s;
+}
+
+.selected,
+.sidebar li:hover {
+  background-color: var(--color-lightest);
+}
+
+.sidebar li img {
+  border-radius: 50%;
+  width: 100%;
+  grid-row: span 2;
+}
+
+.sidebar li h3 {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.sidebar li p {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.sidebar li .button {
+  grid-row: span 2;
+  grid-column: 3;
+}
+
+.sidebar > .button {
+  float: right;
+  margin-right: 1.2rem;
+}
+
+.green {
+  color: #66a80f;
+  text-transform: capitalize;
+}
+
+.red {
+  color: #e03131;
+  text-transform: capitalize;
+}
+
+form {
+  font-size: 1.6rem;
+  display: grid;
+  align-items: center;
+  gap: 1.2rem;
+
+  background-color: var(--color-lightest);
+  border-radius: 7px;
+}
+
+.form-add-friend {
+  grid-template-columns: 1.5fr 1.5fr;
+  margin-bottom: 1.6rem;
+  padding: 1.3rem;
+}
+.form-split-bill {
+  grid-template-columns: 15rem 15rem;
+  padding: 3.2rem 2rem;
+}
+
+label {
+  font-weight: 500;
+}
+
+label::first-letter {
+  display: inline-block;
+  margin-right: 4px;
+  font-size: 1.8rem;
+}
+
+input,
+select {
+  font-family: inherit;
+  color: inherit;
+  font-size: 1.5rem;
+  padding: 0.7rem;
+  text-align: center;
+  border: 1px solid var(--color-light);
+  border-radius: 4px;
+  transition: 0.3s;
+  width: 150px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border: 1px solid var(--color-dark);
+}
+
+form .button {
+  margin-top: 0.6rem;
+  grid-column: 2;
+}
+
+form h2 {
+  grid-column: 1 / -1;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.6rem;
+}
+
+.confirm-delete-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.confirm-delete-container {
+  text-align: center;
+  width: 350px;
+  height: 150px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+}
+
+.confirm-delete-actions {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.spinner-mini {
+  width: 2.4rem;
+  height: 2.4rem;
+  animation: rotate 1.5s infinite linear;
+}
+
+.spinner-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  margin: 4.8rem auto;
+  width: 6.4rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  background: radial-gradient(farthest-side, white 94%, transparent) top/10px
+      10px no-repeat,
+    conic-gradient(transparent 30%, white);
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 10px),
+    rgb(255, 255, 255) 0
+  );
+
+  animation: rotate 1.5s infinite linear;
+}
+
+/* Container for the entire form */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Login form box */
+.login-form {
+  background-color: #583005;
+  padding: 20px;
+  width: 320px;
+  height: 350px;
+  margin-top: 120px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Title for the login form */
+.login-title {
+  font-size: 30px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Individual input fields */
+.login-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  position: relative;
+  /* gap: 5px; */
+}
+
+/* Label for the inputs */
+.login-label {
+  font-size: 16px;
+  color: white;
+  /* margin-bottom: 10px; */
+}
+
+/* Input elements */
+.login-input {
+  width: 100%;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.show-password {
+  position: absolute;
+  top: 32px;
+  right: 10px;
+}
+
+/* Forgot password link */
+.forgot-password {
+  text-align: right;
+  margin-top: -10px;
+  /* margin-bottom: 20px; */
+}
+
+.forgot-password p {
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+/* Hover effect on forgot password */
+.forgot-password p:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Login button container */
+.login-button {
+  display: flex;
+  justify-content: center;
+}
+
+/* Registration link */
+.register-link {
+  text-align: center;
+}
+
+.register-link p {
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  transition: color 0.3s;
+}
+
+/* Hover effect on register link */
+.register-link p:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Sign Up Form CSS */
+
+.signup-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-form {
+  width: 320px;
+  height: 350px;
+  margin-top: 140px;
+  padding: 20px;
+  background-color: #583005;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.signup-title {
+  color: white;
+  font-size: 24px;
+}
+
+.signup-label {
+  color: white;
+  font-size: 12px;
+
+  margin-bottom: 5px;
+  /* display: block; */
+}
+
+.signup-input {
+  width: 100%;
+  font-size: 12px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.signup-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffb74d;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+  background-color: #ffa726;
+  color: #fff4e6;
+}
+
+.already-have-account {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.already-have-account p {
+  display: inline;
+}
+
+.already-have-account span {
+  font-weight: bolder;
+}
+
+.already-have-account span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.error-message {
+  position: absolute;
+  top: 135px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #e03131;
+  font-size: 14px;
+}
+
+.logout-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 10px 0 20px;
+  color: #ffa726;
+}
+
+.logout-button {
+  color: #ffa726;
+  margin-top: 5px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.protected-route {
+  height: 100vh;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-not-found {
+  height: 100vh;
+  background-color: var(--color-grey-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4.8rem;
+}
+
+.box {
+  background-color: var(--color-grey-0);
+  border: 1px solid var(--color-grey-100);
+  border-radius: var(--border-radius-md);
+  padding: 4.8rem;
+  flex: 0 1 96rem;
+  text-align: center;
+}
+
+.box h1 {
+  margin-bottom: 3.2rem;
+}
+
+.back-button {
+  font-size: 2rem;
+  padding: 1.2rem 2.4rem;
+  background-color: var(--color-primary);
+  color: #ffa726;
+  font-weight: bolder;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 6px; /* Set the width of the scrollbar */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded edges for the scrollbar */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Darker color when hovering over the scrollbar */
 }
