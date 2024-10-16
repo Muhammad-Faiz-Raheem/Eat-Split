@@ -30,7 +30,7 @@ export async function login({ email, password }) {
 
 export async function resetPassword({ email }) {
   let { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: "http://localhost:3000/reset-password",
+    redirectTo: "https://eat-n-split-track.vercel.app/reset-password",
   });
 
   if (error) throw new Error(error.message);
