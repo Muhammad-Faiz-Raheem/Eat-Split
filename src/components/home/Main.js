@@ -36,9 +36,6 @@ function Main() {
     [friends]
   );
 
-  console.log(selectBottom);
-  console.log(appBottom);
-
   return (
     <div>
       <div

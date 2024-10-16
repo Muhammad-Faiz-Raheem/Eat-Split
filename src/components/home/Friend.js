@@ -26,8 +26,6 @@ export function Friend({ friend }) {
       return;
     }
 
-    handleSelection(friend);
-
     // Get the position of the button from top
     const rect = buttonRef.current.getBoundingClientRect();
     const heightFromTop = rect.top + window.scrollY;
@@ -37,6 +35,9 @@ export function Friend({ friend }) {
     const heightFromBottom =
       document.body.scrollHeight - (rect.top + window.scrollY);
     handleBottomSelection(heightFromBottom);
+
+    // Select the friend
+    handleSelection(friend);
   }
 
   function handleDelete() {
