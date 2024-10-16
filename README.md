@@ -37,8 +37,8 @@
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/eat-and-split.git
-   cd eat-and-split
+   git clone https://github.com/Muhammad-Faiz-Raheem/Eat-Split.git
+   cd Eat-Split
    ```
 
 2. **Install Dependencies**
