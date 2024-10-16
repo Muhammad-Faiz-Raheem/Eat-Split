@@ -24,7 +24,13 @@ export function FormSpitBill() {
       style={{
         position: "absolute",
         left: isTablet ? 0 : 400,
-        top: isSmall ? selectTop - 210 : isTablet ? selectTop - 155 : 0,
+        top: isSmall
+          ? selectTop - 210
+          : isTablet
+          ? selectTop - 155
+          : window.scrollY > 200
+          ? window.scrollY - 100
+          : 0,
         marginLeft: isTablet ? "50%" : 0,
         translate: isTablet ? "-50%" : 0,
       }}

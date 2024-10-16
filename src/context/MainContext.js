@@ -42,6 +42,7 @@ function MainProvider({ children }) {
   const [friends, setFriends] = useState([]);
   const [selectedFriend, setSelectedFriend] = useState(null);
   const [selectTop, setSelectTop] = useState(0);
+  const [selectBottom, setSelectBottom] = useState(0);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [selectDelFriend, setSelectDelFriend] = useState(null);
   const [isLogedIn, setIsLogedIn] = useState(false);
@@ -98,6 +99,11 @@ function MainProvider({ children }) {
     setSelectTop((curValue) => (curValue === value ? 0 : value));
   }
 
+  function handleBottomSelection(value) {
+    // setSelectBottom(value);
+    setSelectBottom((curValue) => (curValue === value ? 0 : value));
+  }
+
   function handleSplitBill(value) {
     // setFriends((friends) =>
     //   friends.map((friend) =>
@@ -146,6 +152,7 @@ function MainProvider({ children }) {
         isLoading,
         selectedFriend,
         selectTop,
+        selectBottom,
         selectDelFriend,
         confirmDelete,
         isLogedIn,
@@ -154,6 +161,7 @@ function MainProvider({ children }) {
         handleAddFriend,
         handleSelection,
         handleTopSelection,
+        handleBottomSelection,
         handleSplitBill,
         handleDeleteFriend,
         handleDelSelection,

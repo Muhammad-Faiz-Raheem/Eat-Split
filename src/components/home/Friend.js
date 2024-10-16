@@ -4,8 +4,11 @@ import { Button } from "../../ui/Button";
 
 export function Friend({ friend }) {
   const {
+    showAddFriend,
     handleSelection,
     handleTopSelection,
+    handleBottomSelection,
+    handleShowAddFriend,
     selectedFriend,
     handleDelSelection,
     selectDelFriend,
@@ -18,11 +21,22 @@ export function Friend({ friend }) {
   const buttonRef = useRef(null);
 
   function handleClick() {
+    if (showAddFriend) {
+      handleShowAddFriend();
+      return;
+    }
+
     handleSelection(friend);
+
     // Get the position of the button from top
     const rect = buttonRef.current.getBoundingClientRect();
     const heightFromTop = rect.top + window.scrollY;
     handleTopSelection(heightFromTop);
+
+    // Get the position of the button from bottom
+    const heightFromBottom =
+      document.body.scrollHeight - (rect.top + window.scrollY);
+    handleBottomSelection(heightFromBottom);
   }
 
   function handleDelete() {

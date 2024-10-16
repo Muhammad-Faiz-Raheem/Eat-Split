@@ -10,6 +10,7 @@ function Main() {
   const {
     isTablet,
     isSmall,
+    selectBottom,
     handleShowAddFriend,
     selectedFriend,
     showAddFriend,
@@ -34,6 +35,12 @@ function Main() {
           className="app"
           style={{
             marginTop: isSmall ? "300px" : isTablet ? "250px" : "200px",
+            marginBottom:
+              isTablet && selectedFriend
+                ? selectBottom < 511
+                  ? 100 + (409 - selectBottom)
+                  : ""
+                : "",
           }}
         >
           <div className="sidebar sidebar-border">
