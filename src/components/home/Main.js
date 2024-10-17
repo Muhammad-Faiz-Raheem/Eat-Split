@@ -33,7 +33,7 @@ function Main() {
         document.body.scrollHeight - (rect.top + window.scrollY);
       setAppBottom(appHeightFromBottom);
     },
-    [friends]
+    [friends.length, showAddFriend]
   );
 
   return (

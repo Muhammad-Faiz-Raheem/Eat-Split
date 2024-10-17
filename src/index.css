@@ -133,6 +133,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
+  min-width: 60px;
 }
 
 .btn {
@@ -147,7 +148,7 @@ body {
   padding: 0.4rem 0.6rem;
 }
 
-.button:hover {
+.btn:hover {
   color: #fff4e6;
 }
 
