@@ -37,6 +37,8 @@ function ResetPasswordForm() {
     <div
       style={{
         height: "100vh",
+        minHeight: "540px",
+        overflow: "auto",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
