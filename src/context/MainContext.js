@@ -128,6 +128,9 @@ function MainProvider({ children }) {
       id: selectedFriend.id,
     });
 
+    setSelectTop(0);
+    setSelectBottom(0);
+
     setSelectedFriend(null);
   }
 
