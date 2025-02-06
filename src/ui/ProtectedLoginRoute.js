@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Spinner from "./Spinner";
 import { useMain } from "../context/MainContext";
 
-function ProtectedRoute({ children }) {
+function ProtectedLoginRoute({ children }) {
   const navigate = useNavigate();
 
   // 1. Load the authenticated user
@@ -13,7 +13,7 @@ function ProtectedRoute({ children }) {
   // 2. If there is NO authenticated user, then redirect to the /login
   useEffect(
     function () {
-      if (!isAuthenticated && !isLoadingUser) navigate("/login");
+      if (isAuthenticated && !isLoadingUser) navigate("/home");
     },
     [isAuthenticated, isLoadingUser, navigate]
   );
@@ -28,7 +28,7 @@ function ProtectedRoute({ children }) {
 
   // 4. If there is a user render the app
 
-  if (isAuthenticated) return children;
+  if (!isAuthenticated) return children;
 }
 
-export default ProtectedRoute;
+export default ProtectedLoginRoute;

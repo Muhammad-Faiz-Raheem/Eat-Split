@@ -9,6 +9,7 @@ import ResetPassword from "./pages/ResetPassword";
 import Welcome from "./pages/Welcome";
 import PageNotFound from "./ui/PageNotFound";
 import ProtectedRoute from "./ui/ProtectedRoute";
+import ProtectedLoginRoute from "./ui/ProtectedLoginRoute";
 
 export default function App() {
   const queryClient = new QueryClient();
@@ -39,12 +40,13 @@ export default function App() {
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route
               element={
-                <ProtectedRoute>
+                <ProtectedLoginRoute>
                   <Authentication />
-                </ProtectedRoute>
+                </ProtectedLoginRoute>
               }
-            ></Route>
-            <Route path="/login" element={<Authentication />} />
+            >
+              <Route path="/login" element={<Authentication />} />
+            </Route>
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
