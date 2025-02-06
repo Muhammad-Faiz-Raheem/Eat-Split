@@ -26,7 +26,7 @@ function Header() {
             fontSize: isSmall ? 13 : 20,
           }}
         >
-          Split you bill with friends in easy steps
+          Split your bill with friends in easy steps
         </p>
 
         {isAuthenticated && <Logout />}

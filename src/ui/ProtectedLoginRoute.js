@@ -18,6 +18,14 @@ function ProtectedLoginRoute({ children }) {
     [isAuthenticated, isLoadingUser, navigate]
   );
 
+  // 3. While loading, show a spinner
+  if (isLoadingUser)
+    return (
+      <div className="protected-route">
+        <Spinner />
+      </div>
+    );
+
   if (!isAuthenticated) return children;
 }
 
