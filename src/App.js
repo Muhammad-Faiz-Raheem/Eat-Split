@@ -37,6 +37,13 @@ export default function App() {
               <Route path="/home" element={<Home />} />
             </Route>
             <Route path="/reset-password" element={<ResetPassword />} />
+            <Route
+              element={
+                <ProtectedRoute>
+                  <Authentication />
+                </ProtectedRoute>
+              }
+            ></Route>
             <Route path="/login" element={<Authentication />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
